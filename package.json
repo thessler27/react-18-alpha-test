@@ -6,16 +6,22 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "express": "^4.17.1",
+    "react": "^18.0.0-alpha-327d5c484-20211106",
+    "react-dom": "^18.0.0-alpha-327d5c484-20211106",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server:dev": "cross-env NODE_ENV=development nodemon -- server/index.js",
+    "bundler:dev": "cross-env NODE_ENV=development nodemon -- scripts/build.js",
+    "start": "concurrently \"npm run server:dev\" \"npm run bundler:dev\"",
+    "start:prod": "concurrently \"npm run server:prod\" \"npm run bundler:prod\"",
+    "server:prod": "cross-env NODE_ENV=production nodemon -- server/server.js",
+    "bundler:prod": "cross-env NODE_ENV=production nodemon -- scripts/build.js"
   },
   "eslintConfig": {
     "extends": [
@@ -33,6 +39,36 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/register": "^7.16.0",
+    "babel-loader": "8.1.0",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "webpack": "4.44.2",
+    "webpack-cli": "^4.9.1",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build/*"
     ]
   }
 }
