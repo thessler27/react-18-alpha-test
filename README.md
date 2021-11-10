@@ -8,8 +8,10 @@ Mostly based on Dan Abramov's [implementation on code sandbox](https://codesandb
 ## To Run Dev
 
 `yarn start`
+Navigate to `localhost:3006`
 
 ## To Run Prod
 
 `yarn start:prod`
+Navigate to `localhost:3006`.
 
