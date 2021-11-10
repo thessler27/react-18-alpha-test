@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   if (req.url.endsWith('.js')) {
     // Artificially delay serving JS
     // to demonstrate streaming HTML.
-    setTimeout(next, 0);
+    setTimeout(next, 4000);
   } else {
     next();
   }

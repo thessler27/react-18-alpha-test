@@ -68,7 +68,7 @@ function createServerData() {
           done = true;
           promise = null;
           resolve();
-        }, 0);
+        }, 2000);
       });
       throw promise;
     }

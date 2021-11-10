@@ -1,5 +1,4 @@
 import React, {Suspense} from 'react';
-import { useData } from './DataContext';
 import People from './People';
 
 function App() {
@@ -29,18 +28,16 @@ function App() {
 
   return (
     <Html title="Thomas is Awesome">
-      <Suspense fallback={<Loader/>}>
-        <div className="App">
-          <header className="App-header">
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <Suspense fallback={<Loader/>}>
-              <People />
-            </Suspense>
-          </header>
-        </div>
-      </Suspense>
+      <div className="App">
+        <header className="App-header">
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <Suspense fallback={<Loader/>}>
+            <People />
+          </Suspense>
+        </header>
+      </div>
     </Html>
   );
 }
